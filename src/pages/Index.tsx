@@ -1,5 +1,8 @@
 
 import PlagiarismChecker from "@/components/PlagiarismChecker";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { MessageSquare } from "lucide-react";
 
 const Index = () => {
   return (
@@ -9,6 +12,14 @@ const Index = () => {
         <p className="text-xl text-gray-200 max-w-2xl mx-auto">
           The professional tool for detecting plagiarism in academic papers, articles, and content
         </p>
+        <div className="mt-4">
+          <Link to="/chat">
+            <Button variant="outline" className="text-white border-white hover:bg-white/10">
+              <MessageSquare className="mr-2 h-4 w-4" />
+              Talk to Educational Assistant
+            </Button>
+          </Link>
+        </div>
       </header>
       
       <main className="flex-1 container px-4 py-10">
