@@ -43,7 +43,10 @@ const EducationalChatbot: React.FC = () => {
         body: { messages: apiMessages }
       });
       
-      if (error) throw new Error(error.message);
+      if (error) {
+        console.error("Error from Supabase function:", error);
+        throw new Error("Failed to send a request to the Edge Function");
+      }
       
       if (data?.message) {
         const assistantMessage: ChatMessageProps = {
@@ -52,6 +55,9 @@ const EducationalChatbot: React.FC = () => {
         };
         
         setMessages(prev => [...prev, assistantMessage]);
+      } else {
+        console.error("No message in response:", data);
+        throw new Error("Invalid response from AI assistant");
       }
     } catch (error) {
       console.error("Error sending message:", error);
